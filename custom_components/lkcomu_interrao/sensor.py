@@ -17,7 +17,7 @@ from typing import (
     TypeVar,
     Union,
 )
-
+from homeassistant.config_entries import ConfigEntry
 import voluptuous as vol
 from homeassistant.components.sensor import SensorEntity, SensorDeviceClass
 from homeassistant.config_entries import ConfigEntry
@@ -60,6 +60,12 @@ from inter_rao_energosbyt.interfaces import (
 )
 from inter_rao_energosbyt.presets.byt import AccountWithBytInfo, BytInfoSingle
 from inter_rao_energosbyt.util import process_start_end_arguments
+
+STATE_LOCKED = "locked"
+STATE_UNLOCKED = "unlocked"
+STATE_OK = "ok"
+STATE_PROBLEM = "problem"
+STATE_UNKNOWN = "unknown"
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -877,3 +883,4 @@ async_setup_entry = make_common_async_setup_entry(
     LkcomuLastInvoice,
     LkcomuMeter,
 )
+
