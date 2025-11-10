@@ -81,7 +81,7 @@ def _make_code_search_index(code):
 
 
 async def async_get_icons_for_providers(
-    api: "BaseEnergosbytAPI", provider_types: Set[int]
+    api: "BaseEnergosbytAPI", provider_types: set[int]
 ) -> dict[str, str]:
     session = api._session
     base_url = api.BASE_URL
