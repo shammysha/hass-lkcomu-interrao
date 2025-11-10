@@ -25,6 +25,7 @@ from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import ConfigEntryAuthFailed, ConfigEntryNotReady
 from homeassistant.helpers import config_validation as cv
 from homeassistant.helpers.typing import ConfigType
+from homeassistant.config_entries import ConfigEntryDisabler
 
 from custom_components.lkcomu_interrao._base import UpdateDelegatorsDataType
 from custom_components.lkcomu_interrao._schema import CONFIG_ENTRY_SCHEMA
@@ -251,7 +252,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
                     f"ID: {existing_config_entry_id})"
                 )
             )
-            await hass.config_entries.async_set_disabled_by(entry.entry_id, DOMAIN)
+            await hass.config_entries.async_set_disabled_by(config_entry.entry_id, ConfigEntryDisabler.INTEGRATION)
             return False
 
     # Create placeholders
